@@ -1,7 +1,7 @@
 Django Media Placeholder
 =========================
 
-This project override django `static media` and `storage`(optional), for process every media request, if media not present locally, and try to obtain in another location
+This project override django `static, media` and `storage`(optional), for process every media request, if media not present locally, the middleware try to obtain in another location
 
 Its great for dev, homolog and QA ambients because no need to copy production media every time.
 
@@ -12,11 +12,7 @@ Installation
 
     `pip install django-media-placeholder`
 
-2. Uninstall the package with:
-
-    `pip uninstall django-media-placeholder`
-
-3. Add and URL to your URLCONF:
+2. Add and URL to your URLCONF:
     ```
     from django_media_placeholder.static import static
     urlpatterns = [
@@ -24,7 +20,7 @@ Installation
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     ```
 
-4. On `settings.py`, set `MEDIA_URL` to point to it
+3. On `settings.py`, set `MEDIA_URL` to point to it
     ```
     ...
     STATIC_URL = '/static/'
@@ -34,8 +30,15 @@ Installation
     ALTERNATIVE_MEDIA_URL = 'Url to Get image not present in locally'
     ```
 
-5. If use thumbanails, set `DEFAULT_FILE_STORAGE` to new storage,
+4. If use thumbanails, set `DEFAULT_FILE_STORAGE` to new storage,
 (thumbnails's libs generate and get image directly in disk, no request to media path):
     ```
     DEFAULT_FILE_STORAGE = 'django_media_placeholder.custom_storage.OverwritingStorage'
     ```
+
+Uninstall
+---------
+
+1. Uninstall the package with:
+
+    `pip uninstall django-media-placeholder`
